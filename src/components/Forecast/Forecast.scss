@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+.currentDay-wrapper{
+    padding: 5vw;
+    margin: auto;
+    max-width: 650px;
+    max-height: 280px;
+    font-family: 'Amatic SC', cursive;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 3rem;
+    box-shadow: 0 0 1rem #061552;
+    position: relative;
+    text-align: left;
+    
+    .titleDescription{
+        display: inline-flex;
+        flex-direction: column;
+        position: relative;
+        color: black;
+
+        .currentCityName{
+            font-size: 1.8vw;
+        }
+        
+    }
+    .weatherDescription{
+        display: flex; 
+        margin: 1rem auto;
+        color: black;
+        width: 80;
+        
+        .icon{
+            width: 5rem;
+        }
+        .temperature{
+            font-size: 3vw;
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+        .celcius{
+            font-size: 1vw;
+            margin-left: 5px ;
+            cursor: pointer;
+
+            
+        }
+        .separator{
+            font-size: 1vw;
+            margin-left: 5px;
+        }
+        .fahrenheit{
+            font-size: 1vw;
+            margin-left: 5px ;
+            cursor: pointer;
+            
+        }
+    
+        .detailedDescription{
+            position: relative;
+            text-align:left;
+            margin-left: 8rem;
+            color: black;
+        }
+        
+    }
+
+    .celcius.active{
+        text-decoration: underline;
+    }
+}
+
+.upcomingDays-wrapper{
+    display: flex;
+    margin:  2rem auto;
+    justify-content: space-evenly;
+    width: 80%;
+    max-width: 665px;
+    font-family: 'Amatic SC', cursive;
+    list-style: none;
+    background-color: transparent;
+    position: relative;
+    
+    .card{
+        
+        padding: 1vw;
+        max-width: 6rem;
+        width: 80%;
+        height: 8rem;
+        box-shadow: 0 0 1rem #061552;
+        border-radius: 1rem;
+        line-height: 1rem;
+        color: black;
+
+        .day{
+            font-size: 0.75rem;
+            text-align: center ;
+        }
+        .card-icon{
+            width: 4rem;
+            align-items: center;
+        }
+        .min-max{
+            text-align: center;
+        }
+    }
+    
+}
+.card:hover{
+    box-shadow: 0 0 1rem #740606
+}

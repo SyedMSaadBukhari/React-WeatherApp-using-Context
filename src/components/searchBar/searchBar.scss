@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    list-style: none;
+    
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 37vh;
+    h2{
+    
+        font-size: 0.7rem;
+        text-align: center;
+        line-height: 2rem;
+        
+    }
+
+    .searchBox{
+        display: flex;
+        justify-content: space-between;
+        width: 25rem;
+        height: 25px;
+        border-radius: 9px;
+        background-color: transparent;
+        box-shadow: 0 0 1rem #061552;
+        user-select: none;
+
+        .dropdown-menu{
+            position: relative;
+
+            .defaultOption{
+                font-size: 0.8rem;
+                width: 7rem;
+                height: 25px;
+                line-height: 22px;
+                text-align: start;
+                padding-left: 1.4rem;
+                cursor: pointer;
+                border-right: 1px solid #280f24;
+                color: rgb(15, 13, 13);
+
+                &.active{
+                    display: none;
+                }
+            }
+            .dropDown-Icon{
+                display: flex;
+                position: absolute;
+                top: 6px;
+                right: 14px;
+                line-height: 1.2rem;
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            .option-list{
+                position: absolute;
+                font-size: 0.8rem;
+                line-height: 1.9rem;
+                border-radius: 9px;
+                top: 27px;
+                background-color: transparent;
+                width: 7.4rem;
+                text-align: center;
+                padding-top: 9px;
+                box-shadow: 0 0 0.5rem #061552;
+                transition: all 2s;
+                // display: none;
+
+                &.active{
+                    display: block;
+
+                }
+                
+                
+
+                .options{
+                    padding-bottom: 6px;
+                    color: rgb(3, 3, 3);
+                    cursor: pointer;
+                    transition: all 0.2s; 
+                    &:hover{
+                        background:#a9729e ;
+                        color: #280f24 ;
+                    }
+                }
+                
+            }
+
+        }
+        .searchField{
+            width: 18rem;
+            height: 25px;
+            position: relative;
+            
+
+            input{
+                width: 80%;
+                height: 100%;
+                outline: none;
+                border: none;
+                text-align: left;
+                padding-left: 0.5rem;
+                border-right: 1px solid #280f24;
+                background-color: transparent;
+            }
+            .searchIcon{
+                position: absolute;
+                top: 6px;
+                right: 22px;
+                line-height: 1.2rem;
+                cursor: pointer;
+                font-size: 12px;
+            }
+        }
+    }
+}
