@@ -10,13 +10,13 @@ const useForecast = ()=>{
         console.log(value);
         let URL = '';
         if (isNaN(value)){
-            URL = `http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${key}`;
+            URL = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${key}`;
         }
         else if (value && value.includes(",")){
-            URL = `http://api.openweathermap.org/data/2.5/forecast?zip=${value}&units=metric&appid=${key}`;
+            URL = `https://api.openweathermap.org/data/2.5/forecast?zip=${value}&units=metric&appid=${key}`;
         }
         else {
-            URL = `http://api.openweathermap.org/data/2.5/forecast?id=${value}&units=metric&appid=${key}`
+            URL = `https://api.openweathermap.org/data/2.5/forecast?id=${value}&units=metric&appid=${key}`
         }
 
         try{
