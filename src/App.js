@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/header/header';
-import SearchBar from './components/searchBar/searchBar';
+import SearchBar from './components/searchBar/SearchBar';
 import useForecast from './hooks/useForecast';
 import Error from './components/Error/Error';
 import Forecast from './components/Forecast/Forecast';

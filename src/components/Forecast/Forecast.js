@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import './Forecast.scss';
 
+
 const weekDays = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday' ];
 const Forecast = ({forecast})=>{
 
         const [selectedDay, setSelectedDay]= useState();
         const [unit, setUnit] = useState('C');
+        
+        
         if(!forecast){
             return null;
         }
         const currentDate = new Date();
         const forecastDays=[];
+
         for(let i = 0; i < 5; i++){
             const forecastDate = new Date(currentDate);
             forecastDate.setDate(forecastDate.getDate()+i);
@@ -22,24 +26,33 @@ const Forecast = ({forecast})=>{
             const itemDay = weekDays[itemDate.getDay()];
             if (!acc[itemDay]){
                 acc[itemDay]= item;
-            }
+            } 
             return acc;
         },{});
 
         const handleDayClick = (day)=>{
             setSelectedDay(day);
+            
         }
+        
+        
 
         const toggleUnit = ()=>{
             setUnit(unit === 'C' ? "F" : 'C')
         }
         const selectedDayData = selectedDay ? upcomingDays[selectedDay] : upcomingDays[weekDays[currentDate.getDay()]];
-        
+        const selectedDayIntervals = selectedDayData ? forecast.list.filter(item => new Date(item.dt_txt).toLocaleDateString()=== new Date(selectedDayData.dt_txt).toLocaleDateString()) :[];
         const temp = unit === 'F' ? (selectedDayData.main.temp * 9/5) +32 : selectedDayData.main.temp;
+        console.log(selectedDayIntervals)
+        console.log(selectedDayData)
 
         const convertToFahrenheit = (celcius) =>{
             return (celcius * 9/5) + 32;
         }
+
+        
+        
+        
         
     return(
         <>
@@ -96,9 +109,34 @@ const Forecast = ({forecast})=>{
             ))}
 
         </div>
+        <div className='timeIntervalWrapper'>
+        <div className='timeIntervalForecast'>
+                <div className='time'>Time</div>
+                <div className='inetrvalTemp'>Temperature</div>
+                <div className='min-maxInetrvalTemp'>Min Max</div>
+                </div>
+
+            {selectedDayIntervals.map((item, index)=>(
+
+                <div className='timeIntervalForecast'>
+                <div className='time'>{new Date(item.dt_txt).toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'})}</div>
+                <div className='inetrvalTemp'>
+                    { unit === 'C'
+                    ?`${Math.round(item.main.temp)}°`
+                    :`${Math.round(convertToFahrenheit(item.main.temp))}°`
+                }
+                </div>
+                <div className='min-maxInetrvalTemp'>
+                    { unit === 'C'
+                    ?`${Math.round(item.main.temp_min)}° ${Math.round(item.main.temp_max)}°`
+                    : `${Math.round(convertToFahrenheit(item.main.temp_min))}° ${Math.round(convertToFahrenheit(item.main.temp_max))}°`
+                    } 
+                </div>
+                </div>
+            ))}
+        </div>
+        
+
         </>
-    )
-
-}
-
+    )}
 export default Forecast;

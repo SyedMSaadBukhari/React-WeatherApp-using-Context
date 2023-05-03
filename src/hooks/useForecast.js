@@ -7,7 +7,7 @@ const useForecast = ()=>{
     //API Call
     const submitRequest = async (value) => {
         const key = 'c73aa228bfba692462f96e89080aa39a';
-        console.log(value);
+        //console.log(value);
         let URL = '';
         if (isNaN(value)){
             URL = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${key}`;

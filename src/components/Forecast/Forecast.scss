@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 .currentDay-wrapper{
-    padding: 5vw;
+    padding: 2vw;
     margin: auto;
-    max-width: 650px;
-    max-height: 280px;
+    max-width: 600px;
+    max-height: 200px;
     font-family: 'Amatic SC', cursive;
     list-style: none;
     background-color: transparent;
@@ -15,11 +15,18 @@
     .titleDescription{
         display: inline-flex;
         flex-direction: column;
-        position: relative;
+        position: absolute;
         color: black;
 
         .currentCityName{
-            font-size: 1.8vw;
+            font-size: 1.1vw;
+            font-weight: bold;
+        }
+        .currentDay{
+            font-size: 0.8vw;
+        }
+        .condition{
+            font-size: 0.8vw;
         }
         
     }
@@ -27,46 +34,50 @@
         display: flex; 
         margin: 1rem auto;
         color: black;
-        width: 80;
+        
         
         .icon{
-            width: 5rem;
+            width: 4rem;
+            height: 4rem;
+            margin:  4rem auto;
         }
         .temperature{
-            font-size: 3vw;
-            margin-top: 0.5rem;
-            margin-left: 1.5rem;
+            font-size: 2.1vw;
+            margin: 4rem auto;
         }
         .celcius{
             font-size: 1vw;
-            margin-left: 5px ;
+            
             cursor: pointer;
+            margin: 3.5rem auto;
 
             
         }
         .separator{
-            font-size: 1vw;
-            margin-left: 5px;
+            font-size: 0.9vw;
+            
+            margin: 3.5rem auto;
         }
         .fahrenheit{
             font-size: 1vw;
-            margin-left: 5px ;
+            
+            margin: 3.5rem auto;
             cursor: pointer;
             
         }
     
         .detailedDescription{
+            font-size: 0.8vw;
             position: relative;
             text-align:left;
-            margin-left: 8rem;
+            margin-top: 4rem;
+            margin-left: 13rem;
             color: black;
         }
         
     }
 
-    .celcius.active{
-        text-decoration: underline;
-    }
+    
 }
 
 .upcomingDays-wrapper{
@@ -74,7 +85,7 @@
     margin:  2rem auto;
     justify-content: space-evenly;
     width: 80%;
-    max-width: 665px;
+    max-width: 600px;
     font-family: 'Amatic SC', cursive;
     list-style: none;
     background-color: transparent;
@@ -103,8 +114,35 @@
             text-align: center;
         }
     }
-    
+    .card:hover{
+        box-shadow: 0 0 1rem #740606
+    }
 }
-.card:hover{
-    box-shadow: 0 0 1rem #740606
+
+
+.timeIntervalWrapper{
+    padding: 2.5vw;
+    margin:  2rem auto;
+    max-width: 600px;
+    min-height: 210px;
+    font-family: 'Amatic SC', cursive;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 3rem;
+    box-shadow: 0 0 1rem #061552;
+    position: relative;
+    text-align: left;
+
+    .timeIntervalForecast{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        .time{
+            justify-content: center;
+        }
+    
+    }
+
 }
