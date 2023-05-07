@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Error.scss';
 
-const Error = ({message})=>{
+const setError = ({message})=>{
+    
         <div className='errorMessage'>
-            {message}
+            {message} 
         </div>
 }
 
@@ -16,4 +17,4 @@ Error.defaultProps = {
     message : 'An Error Occured'
 };
 
-export default Error;
+export default setError;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { SelectedOptionContext } from '../../Context/SelectedOptionContext';
 import './searchBar.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCaretDown, faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -8,16 +9,16 @@ import PropTypes from 'prop-types';
 
 const SearchBar = ({submitSearch})=>{
     const [isActive, setIsActive]= useState(false);
-    const options = ['City Name','City Id','Zip Code'];
+    const {selectedOption, setSelectedOption, options} = useContext(SelectedOptionContext);
     const [searchItem, setSearchItem] = useState('');
-    const [selectedOption, setSelectedOption] = useState("Search by");
-
     const onSubmit = e =>{
         e.preventDefault();
         if (!searchItem || searchItem === '') return
         submitSearch(searchItem)
         
     }
+    // console.log(selectedOption)
+    
     return(
         <>
             

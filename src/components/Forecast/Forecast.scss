@@ -117,6 +117,9 @@
     .card:hover{
         box-shadow: 0 0 1rem #740606
     }
+    .card:active{
+        box-shadow:  3px 2px 22px 1px gold;
+    }
 }
 
 

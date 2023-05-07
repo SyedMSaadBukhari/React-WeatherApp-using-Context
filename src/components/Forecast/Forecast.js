@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './Forecast.scss';
 
 
-const weekDays = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday' ];
-const Forecast = ({forecast})=>{
 
+const weekDays = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday' ];
+
+const Forecast = ({forecast})=>{
+        
         const [selectedDay, setSelectedDay]= useState();
         const [unit, setUnit] = useState('C');
-        
-        
         if(!forecast){
             return null;
         }
@@ -43,8 +43,6 @@ const Forecast = ({forecast})=>{
         const selectedDayData = selectedDay ? upcomingDays[selectedDay] : upcomingDays[weekDays[currentDate.getDay()]];
         const selectedDayIntervals = selectedDayData ? forecast.list.filter(item => new Date(item.dt_txt).toLocaleDateString()=== new Date(selectedDayData.dt_txt).toLocaleDateString()) :[];
         const temp = unit === 'F' ? (selectedDayData.main.temp * 9/5) +32 : selectedDayData.main.temp;
-        console.log(selectedDayIntervals)
-        console.log(selectedDayData)
 
         const convertToFahrenheit = (celcius) =>{
             return (celcius * 9/5) + 32;
@@ -118,7 +116,7 @@ const Forecast = ({forecast})=>{
 
             {selectedDayIntervals.map((item, index)=>(
 
-                <div className='timeIntervalForecast'>
+                <div className='timeIntervalForecast' key={index}>
                 <div className='time'>{new Date(item.dt_txt).toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'})}</div>
                 <div className='inetrvalTemp'>
                     { unit === 'C'

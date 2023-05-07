@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './components/header/header';
 import SearchBar from './components/searchBar/SearchBar';
-import useForecast from './hooks/useForecast';
-import Error from './components/Error/Error';
 import Forecast from './components/Forecast/Forecast';
-
+import { SelectedOptionProvider, SelectedOptionContext } from './Context/SelectedOptionContext';
 
 
 function App() {
-  const {isError, forecast, submitRequest } = useForecast();
+
+      return(
+        <SelectedOptionProvider>
+          <AppContent/>
+        </SelectedOptionProvider>
+      )
+}
+  function AppContent(){
+
+    const { forecast, submitRequest } = useContext(SelectedOptionContext)
   const onSubmit = (value) =>{
     submitRequest(value)
   }
   return (
     <>
-      <Header title = "WEATHER FORECAST (5 DAYS)"/>
-      <SearchBar submitSearch={onSubmit}/>
-      {isError && <Error message={isError}/>}
-      {forecast && <Forecast forecast={forecast}/>}
       
+        <Header title = "WEATHER FORECAST (5 DAYS)"/>
+        <SearchBar submitSearch={onSubmit}/>
+        {forecast && <Forecast forecast = {forecast}/>}
       </>
     )
 }
 
 export default App;
+

@@ -1,23 +1,33 @@
 import { useState } from "react";
 import axios from 'axios';
 
+
 const useForecast = ()=>{
-    const [isError, setError] = useState(false);
     const [forecast, setForecast] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('SearchBy');
+    const options = ['City Name','City Id','Zip Code'];
+
     //API Call
     const submitRequest = async (value) => {
         const key = 'c73aa228bfba692462f96e89080aa39a';
-        //console.log(value);
         let URL = '';
-        if (isNaN(value)){
+        // console.log(selectedOption)
+        if (selectedOption === 'City Name' && (!value.includes(",")) ){
             URL = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${key}`;
         }
-        else if (value && value.includes(",")){
+        else if (selectedOption === 'City Id' ){
+            URL = `https://api.openweathermap.org/data/2.5/forecast?id=${value}&units=metric&appid=${key}`;
+        }
+        else if(selectedOption === 'Zip Code' && (value && value.includes(","))) {
             URL = `https://api.openweathermap.org/data/2.5/forecast?zip=${value}&units=metric&appid=${key}`;
+            
         }
-        else {
-            URL = `https://api.openweathermap.org/data/2.5/forecast?id=${value}&units=metric&appid=${key}`
+        else{
+            console.log("Invalid")
+            
+            return
         }
+        
 
         try{
             const response = await axios.get(URL);
@@ -25,15 +35,20 @@ const useForecast = ()=>{
             console.log(response.data)
         }
         catch (error){
-            setError(true)
+            return error;
         }
         
     };
 
+    
+
     return {
-        isError,
+        selectedOption,
         forecast,
+        setSelectedOption,
+        options,
         submitRequest
     };
 };
+
 export default useForecast;
